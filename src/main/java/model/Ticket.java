@@ -8,6 +8,8 @@ public class Ticket {
     private LocalDateTime dataAbertura;
     private String status; // Aberto | Em Andamento | Resolvido
 
+    private String nomeUtilizador;
+
     public Ticket() {}
 
     public Ticket(int id, String pergunta, LocalDateTime dataAbertura, String status) {
@@ -28,4 +30,7 @@ public class Ticket {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public String getNomeUtilizador() { return nomeUtilizador; }
+    public void setNomeUtilizador(String nomeUtilizador) { this.nomeUtilizador = nomeUtilizador; }
 }

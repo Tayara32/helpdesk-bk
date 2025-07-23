@@ -17,8 +17,14 @@ public class MainView {
         btnPerguntas.addActionListener(e -> new PerguntasView(new PerguntaController()).initUI());
         btnTickets.addActionListener(e -> new TicketsView(new TicketController()).initUI());
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(2, 1, 10, 10));
+        // Painel com FlowLayout para deixar os botões lado a lado
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 100));
+
+        // Tamanho fixo dos botões (opcional)
+        Dimension buttonSize = new Dimension(140, 40);
+        btnPerguntas.setPreferredSize(buttonSize);
+        btnTickets.setPreferredSize(buttonSize);
+
         panel.add(btnPerguntas);
         panel.add(btnTickets);
 
@@ -27,3 +33,4 @@ public class MainView {
         frame.setVisible(true);
     }
 }
+
