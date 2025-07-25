@@ -18,7 +18,7 @@ public class TicketDAO {
         String status = rs.getString("status");
         String nomeUtilizador = rs.getString("nome_utilizador");
 
-        Ticket t = new Ticket(id, pergunta, dt, status);
+        Ticket t = new Ticket(id, pergunta, dt, status, nomeUtilizador);
         t.setNomeUtilizador(nomeUtilizador);
         return t;
     }
@@ -26,7 +26,11 @@ public class TicketDAO {
 
     public List<Ticket> listarTodos() {
         List<Ticket> lista = new ArrayList<>();
-        String sql = "SELECT u.nome, t.* FROM tickets t INNER JOIN utilizadores u ON t.id_utilizador = u.id ORDER BY id DESC";
+        String sql = "SELECT u.nome AS nome_utilizador, k.pergunta, t.id, t.data_abertura, t.status \n" +
+                "FROM tickets t\n" +
+                "INNER JOIN utilizadores u ON t.id_utilizador = u.id\n" +
+                "INNER JOIN knowledge_base k ON t.pergunta_id = k.id\n" +
+                "ORDER BY t.id DESC";
         try (Connection c = DBConnection.getConnection();
              PreparedStatement ps = c.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {

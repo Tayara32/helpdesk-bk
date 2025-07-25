@@ -19,7 +19,7 @@ public class TicketsView {
         frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        String[] colunas = {"ID", "Pergunta", "Data", "Status"};
+        String[] colunas = {"ID", "Pergunta", "Data", "Status", "Utilizador"};
         List<Ticket> lista = controller.listar();
         Object[][] dados = controller.toTableData(lista);
 

@@ -14,13 +14,14 @@ public class TicketController {
     }
 
     public Object[][] toTableData(List<Ticket> lista) {
-        Object[][] data = new Object[lista.size()][4];
+        Object[][] data = new Object[lista.size()][5];
         for (int i = 0; i < lista.size(); i++) {
             Ticket t = lista.get(i);
             data[i][0] = t.getId();
             data[i][1] = t.getPergunta();
             data[i][2] = t.getDataAbertura();
             data[i][3] = t.getStatus();
+            data[i][4] = t.getNomeUtilizador();
         }
         return data;
     }
